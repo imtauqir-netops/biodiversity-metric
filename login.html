@@ -11,7 +11,7 @@
             padding: 0;
             background-color: #f2f2f2;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             height: 100vh;
         }
@@ -20,20 +20,14 @@
             color: white;
             text-align: center;
             padding: 20px;
-            font-size: 2em;
-            position: fixed;
-            top: 0;
             width: 100%;
-            z-index: 1;
+            font-size: 2em;
         }
         nav {
             background: #1b5e20;
             padding: 10px;
             text-align: center;
-            position: fixed;
-            top: 60px;
             width: 100%;
-            z-index: 1;
         }
         nav a {
             color: white;
@@ -51,7 +45,7 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
-            margin-top: 150px;
+            margin-top: 20px;
         }
         .login-container h2 {
             margin-bottom: 20px;
@@ -88,7 +82,6 @@
         <a href="services.html">Services</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-        <span id="biodiversity-link" style="display: none;"><a href="biodiversity_metric.html">Biodiversity Metric</a></span>
     </nav>
 
     <div class="login-container">
@@ -103,25 +96,23 @@
     <script>
         document.getElementById('login-form').addEventListener('submit', function(event) {
             event.preventDefault();
-
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            // Simple username/password check (can be replaced with real authentication)
-            if (username === 'admin' && password === 'password') {
+            const credentials = {
+                admin: 'password',
+                partner: 'partner123',
+                consultant: 'consult123'
+            };
+
+            if (credentials[username] && credentials[username] === password) {
                 sessionStorage.setItem('loggedIn', 'true');
                 sessionStorage.setItem('username', username);
                 window.location.href = 'index.html';
             } else {
-                alert('Invalid credentials. Try again!');
+                alert('Invalid credentials.');
             }
         });
-
-        // Show Biodiversity Metric link only if logged in
-        const isLoggedIn = sessionStorage.getItem('loggedIn');
-        if (isLoggedIn) {
-            document.getElementById('biodiversity-link').style.display = 'inline';
-        }
     </script>
 </body>
 </html>

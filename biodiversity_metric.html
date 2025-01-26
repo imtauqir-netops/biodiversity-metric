@@ -32,6 +32,23 @@
         nav a:hover {
             text-decoration: underline;
         }
+        nav .username {
+            color: white;
+            font-size: 1.2em;
+            margin-left: 15px;
+        }
+        nav .logout-button {
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 15px;
+        }
+        nav .logout-button:hover {
+            background-color: #e53935;
+        }
         .container {
             width: 90%;
             max-width: 1200px;
@@ -46,7 +63,7 @@
         }
         .form-section h2 {
             margin-bottom: 10px;
-            font-size: 1.2em;
+            font-size: 1.5em;
             color: #333;
         }
         .form-section input, .form-section select {
@@ -61,6 +78,39 @@
             margin: 5px 0;
             color: #555;
         }
+        .button-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .button-section button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .button-primary {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .button-secondary {
+            background-color: #f44336;
+            color: white;
+        }
+        .map-section {
+            margin: 20px 0;
+        }
+        .map-placeholder {
+            width: 100%;
+            height: 300px;
+            background: #ccc;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #666;
+        }
         footer {
             text-align: center;
             padding: 20px 0;
@@ -68,22 +118,11 @@
             color: white;
             margin-top: 20px;
         }
-        .logout-button {
-            padding: 10px 20px;
-            background-color: #f44336;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .logout-button:hover {
-            background-color: #e53935;
-        }
     </style>
 </head>
 <body>
     <header>
-        Biodiversity Metric
+        Biodiversity Metrics
     </header>
 
     <nav>
@@ -91,10 +130,12 @@
         <a href="services.html">Services</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-        <button class="logout-button" onclick="logout()" style="display: none;" id="logout-button">Logout</button>
+        <span class="username" id="welcome-username" style="display: none;"></span>
+        <button class="logout-button" id="logout-button" style="display: none;" onclick="logout()">Logout</button>
     </nav>
 
     <div class="container">
+        <!-- Project Details Section -->
         <div class="form-section">
             <h2>Project Details</h2>
             <label for="planning-authority">Planning Authority</label>
@@ -115,6 +156,20 @@
             <label for="target-gain">Target % Net Gain</label>
             <input type="number" id="target-gain" placeholder="Enter target % net gain">
         </div>
+
+        <!-- Map Section -->
+        <div class="map-section">
+            <h2>On-Site Baseline Map</h2>
+            <div class="map-placeholder">Baseline map will be displayed here</div>
+        </div>
+
+        <!-- Buttons Section -->
+        <div class="button-section">
+            <button class="button-primary">Main Menu</button>
+            <button class="button-primary">Results</button>
+            <button class="button-secondary">Reset View</button>
+            <button class="button-primary">View All</button>
+        </div>
     </div>
 
     <footer>
@@ -122,18 +177,26 @@
     </footer>
 
     <script>
+        // Check if the user is logged in and set the welcome message
+        const isLoggedIn = sessionStorage.getItem('loggedIn');
+        const username = sessionStorage.getItem('username');
+
+        if (isLoggedIn && username) {
+            const welcomeElement = document.getElementById('welcome-username');
+            welcomeElement.textContent = `Welcome, ${username}`;
+            welcomeElement.style.display = 'inline';
+
+            const logoutButton = document.getElementById('logout-button');
+            logoutButton.style.display = 'inline';
+        } else {
+            // Redirect to login if not logged in
+            window.location.href = 'login.html';
+        }
+
         function logout() {
             sessionStorage.removeItem('loggedIn');
             sessionStorage.removeItem('username');
             window.location.href = 'login.html';
-        }
-
-        // Show logout button if logged in
-        const isLoggedIn = sessionStorage.getItem('loggedIn');
-        if (isLoggedIn) {
-            document.getElementById('logout-button').style.display = 'inline';
-        } else {
-            window.location.href = 'login.html'; // Redirect to login if not logged in
         }
     </script>
 </body>
