@@ -82,11 +82,26 @@
             color: white;
             margin-top: 20px;
         }
+        .logout-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .logout-button {
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .logout-button:hover {
+            background-color: #e53935;
+        }
     </style>
 </head>
 <body>
     <header>
-        Razient Corporation
+        Biodiversity Metrics
     </header>
 
     <nav>
@@ -105,7 +120,7 @@
     <div class="container">
         <div class="section">
             <h2>About Us</h2>
-            <p>Razient Corporation is dedicated to creating innovative technical solutions for environmental monitoring and biodiversity management. Our mission is to empower industries with tools to monitor, track, and report their ecological impact effectively.</p>
+            <p>Biodiversity Metrics is dedicated to creating innovative technical solutions for environmental monitoring and biodiversity management. Our mission is to empower industries with tools to monitor, track, and report their ecological impact effectively.</p>
         </div>
 
         <div class="section">
@@ -117,16 +132,25 @@
             </ul>
         </div>
 
-        <div class="section">
-            <h2>Contact Us</h2>
-            <p>We would love to hear from you! Get in touch with us to learn more about our solutions.</p>
-            <p><strong>Email:</strong> info@razient.com</p>
-            <p><strong>Phone:</strong> +1-800-RAZIENT</p>
+        <div class="section logout-container">
+            <button class="logout-button" onclick="logout()">Logout</button>
         </div>
     </div>
 
     <footer>
-        &copy; 2025 Razient Corporation. All Rights Reserved.
+        &copy; 2025 Biodiversity Metrics. All Rights Reserved.
     </footer>
+
+    <script>
+        function logout() {
+            sessionStorage.removeItem('loggedIn');
+            window.location.href = 'login.html';
+        }
+
+        // Redirect to login if not logged in
+        if (!sessionStorage.getItem('loggedIn')) {
+            window.location.href = 'login.html';
+        }
+    </script>
 </body>
 </html>
