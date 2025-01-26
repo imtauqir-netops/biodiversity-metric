@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statutory Biodiversity Metric</title>
+    <title>Homepage - Biodiversity Metric</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,6 +18,20 @@
             padding: 20px 0;
             font-size: 1.5em;
         }
+        nav {
+            background: #333;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
         .container {
             width: 90%;
             max-width: 1200px;
@@ -28,102 +41,36 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .form-section {
-            margin-bottom: 20px;
-        }
-        .form-section h2 {
-            margin-bottom: 10px;
-            font-size: 1.2em;
-            color: #333;
-        }
-        .form-section input, .form-section select {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .form-section label {
-            display: block;
-            margin: 5px 0;
-            color: #555;
-        }
-        .button-section {
+        footer {
             text-align: center;
-            margin: 20px 0;
-        }
-        .button-section button {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 1em;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .button-primary {
-            background-color: #4CAF50;
+            padding: 10px 0;
+            background: #333;
             color: white;
-        }
-        .button-secondary {
-            background-color: #f44336;
-            color: white;
-        }
-        .map-section {
-            margin: 20px 0;
-        }
-        .map-placeholder {
-            width: 100%;
-            height: 300px;
-            background: #ccc;
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #666;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <header>
-        The Statutory Biodiversity Metric
+        Welcome to Biodiversity Metrics
     </header>
+    
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="biodiversity_metric.html">Biodiversity Metric</a>
+    </nav>
 
     <div class="container">
-        <!-- Project Details Section -->
-        <div class="form-section">
-            <h2>Project Details</h2>
-            <label for="planning-authority">Planning Authority</label>
-            <input type="text" id="planning-authority" placeholder="Enter planning authority">
-
-            <label for="project-name">Project Name</label>
-            <input type="text" id="project-name" placeholder="Enter project name">
-
-            <label for="applicant">Applicant</label>
-            <input type="text" id="applicant" placeholder="Enter applicant name">
-
-            <label for="application-type">Application Type</label>
-            <input type="text" id="application-type" placeholder="Enter application type">
-
-            <label for="application-ref">Planning Application Reference</label>
-            <input type="text" id="application-ref" placeholder="Enter application reference">
-
-            <label for="target-gain">Target % Net Gain</label>
-            <input type="number" id="target-gain" placeholder="Enter target % net gain">
-        </div>
-
-        <!-- Map Section -->
-        <div class="map-section">
-            <h2>On-Site Baseline Map</h2>
-            <div class="map-placeholder">Baseline map will be displayed here</div>
-        </div>
-
-        <!-- Buttons Section -->
-        <div class="button-section">
-            <button class="button-primary">Main Menu</button>
-            <button class="button-primary">Results</button>
-            <button class="button-secondary">Reset View</button>
-            <button class="button-primary">View All</button>
-        </div>
+        <h1>Welcome to Biodiversity Metrics</h1>
+        <p>Your one-stop solution for tracking, managing, and optimizing biodiversity metrics for your projects.</p>
+        <p>Explore our features, learn about us, or contact us to get started!</p>
     </div>
+
+    <footer>
+        &copy; 2025 Biodiversity Metrics. All Rights Reserved.
+    </footer>
 </body>
 </html>
