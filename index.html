@@ -97,6 +97,11 @@
         .logout-button:hover {
             background-color: #e53935;
         }
+        .username {
+            color: white;
+            font-size: 1.2em;
+            margin-right: 15px;
+        }
     </style>
 </head>
 <body>
@@ -109,7 +114,12 @@
         <a href="services.html">Services</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-        <a href="biodiversity_metric.html">Biodiversity Metric</a>
+        <a href="login.html" id="login-link">Login</a>
+        <span id="biodiversity-link" style="display: none;"><a href="biodiversity_metric.html">Biodiversity Metric</a></span>
+        <span id="logout-container" style="display: none;">
+            <span id="username" class="username"></span>
+            <button class="logout-button" onclick="logout()">Logout</button>
+        </span>
     </nav>
 
     <div class="hero">
@@ -131,10 +141,6 @@
                 <li><strong>Sustainability Reporting:</strong> Comprehensive tools for ESG reporting and compliance.</li>
             </ul>
         </div>
-
-        <div class="section logout-container">
-            <button class="logout-button" onclick="logout()">Logout</button>
-        </div>
     </div>
 
     <footer>
@@ -144,12 +150,21 @@
     <script>
         function logout() {
             sessionStorage.removeItem('loggedIn');
+            sessionStorage.removeItem('username');
             window.location.href = 'login.html';
         }
 
-        // Redirect to login if not logged in
-        if (!sessionStorage.getItem('loggedIn')) {
-            window.location.href = 'login.html';
+        // Manage navbar visibility based on login status
+        const isLoggedIn = sessionStorage.getItem('loggedIn');
+        const username = sessionStorage.getItem('username');
+
+        if (isLoggedIn) {
+            document.getElementById('biodiversity-link').style.display = 'inline';
+            document.getElementById('logout-container').style.display = 'inline';
+            document.getElementById('login-link').style.display = 'none';
+            if (username) {
+                document.getElementById('username').textContent = `Welcome, ${username}`;
+            }
         }
     </script>
 </body>

@@ -61,45 +61,23 @@
             margin: 5px 0;
             color: #555;
         }
-        .button-section {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .button-section button {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 1em;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .button-primary {
-            background-color: #4CAF50;
-            color: white;
-        }
-        .button-secondary {
-            background-color: #f44336;
-            color: white;
-        }
-        .map-section {
-            margin: 20px 0;
-        }
-        .map-placeholder {
-            width: 100%;
-            height: 300px;
-            background: #ccc;
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #666;
-        }
         footer {
             text-align: center;
             padding: 20px 0;
             background: #1b5e20;
             color: white;
             margin-top: 20px;
+        }
+        .logout-button {
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .logout-button:hover {
+            background-color: #e53935;
         }
     </style>
 </head>
@@ -113,11 +91,10 @@
         <a href="services.html">Services</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-        <a href="biodiversity_metric.html">Biodiversity Metric</a>
+        <button class="logout-button" onclick="logout()" style="display: none;" id="logout-button">Logout</button>
     </nav>
 
     <div class="container">
-        <!-- Project Details Section -->
         <div class="form-section">
             <h2>Project Details</h2>
             <label for="planning-authority">Planning Authority</label>
@@ -138,24 +115,26 @@
             <label for="target-gain">Target % Net Gain</label>
             <input type="number" id="target-gain" placeholder="Enter target % net gain">
         </div>
-
-        <!-- Map Section -->
-        <div class="map-section">
-            <h2>On-Site Baseline Map</h2>
-            <div class="map-placeholder">Baseline map will be displayed here</div>
-        </div>
-
-        <!-- Buttons Section -->
-        <div class="button-section">
-            <button class="button-primary">Main Menu</button>
-            <button class="button-primary">Results</button>
-            <button class="button-secondary">Reset View</button>
-            <button class="button-primary">View All</button>
-        </div>
     </div>
 
     <footer>
         &copy; 2025 Biodiversity Metrics. All Rights Reserved.
     </footer>
+
+    <script>
+        function logout() {
+            sessionStorage.removeItem('loggedIn');
+            sessionStorage.removeItem('username');
+            window.location.href = 'login.html';
+        }
+
+        // Show logout button if logged in
+        const isLoggedIn = sessionStorage.getItem('loggedIn');
+        if (isLoggedIn) {
+            document.getElementById('logout-button').style.display = 'inline';
+        } else {
+            window.location.href = 'login.html'; // Redirect to login if not logged in
+        }
+    </script>
 </body>
 </html>
